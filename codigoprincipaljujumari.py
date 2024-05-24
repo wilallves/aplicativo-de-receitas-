@@ -20,7 +20,7 @@ Window.size = 360,640
 class Home(BoxLayout):
     def __init__(self, **kwargs):
         super(Home, self).__init__(**kwargs)
-        # Defina a cor de fundo desejada
+        
         Window.clearcolor = get_color_from_hex("#ff8e31")
         self.orientation = "vertical"
         self.padding = [100, 100]
@@ -156,6 +156,7 @@ class TelaPratos(GridLayout):
 
     def on_button_release(self, instance):
         print("Button released")
+
 
 
 
