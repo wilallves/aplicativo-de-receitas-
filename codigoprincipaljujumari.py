@@ -26,12 +26,12 @@ class Home(BoxLayout):
         self.padding = [100, 100]
         self.spacing = 10
 
-        # Adicione a imagem (certifique-se de que o arquivo esteja no mesmo diretório)
+        
         self.add_widget(Image(source='IMG_9831-removebg-preview.png', size_hint=(None,None),size=(250,250)))
         self.add_widget(Label(text="ChefeVirtual", font_size=50, font_name='Impact', color=get_color_from_hex('#d5fff4')))
         self.add_widget(Label(text="Seja Bem-Vinda", font_size=20, font_name='Arial', color=get_color_from_hex('#d5fff4')))
 
-        # Botões
+        
         self.cadastrar_button = Button(text="Entrar", background_color=get_color_from_hex('#1eb88f'))
         self.cadastrar_button.bind(on_press=self.entrar)
         self.login_button = Button(text="Não possui uma conta? Cadastre-se", background_color=get_color_from_hex('#1eb88f'))
@@ -45,7 +45,7 @@ class Home(BoxLayout):
     def cadastrar(self, *args):
         self.parent.parent.current = 'Cadastro'
 
-
+#Julia e Mariana
 class TelaLogin(BoxLayout):
     def __init__(self, **kwargs):
         super(TelaLogin, self).__init__(**kwargs)
@@ -54,11 +54,11 @@ class TelaLogin(BoxLayout):
         self.spacing = 10
         Window.clearcolor = get_color_from_hex("#ff8e31")
 
-        # Imagem (certifique-se de que o arquivo esteja no mesmo diretório)
+       
         self.add_widget(Label(text="ChefeVirtual", font_size=50, font_name='Impact', color=get_color_from_hex('#d5fff4')))
         self.add_widget(Label(text="Faça seu Login", font_size=20, font_name='Arial', color=get_color_from_hex('#d5fff4')))
 
-        # Campos de entrada
+        
         self.add_widget(Label(text="Nome de usuário:", font_name='Arial', color=get_color_from_hex('#5e2129'), font_size=20))
         self.username_input = TextInput(hint_text="Nome de usuário ...")
         self.add_widget(self.username_input)
@@ -67,18 +67,18 @@ class TelaLogin(BoxLayout):
         self.senha_input = TextInput(hint_text="Digite sua senha ...", password=True)
         self.add_widget(self.senha_input)
 
-        # Botão de Entrar
+       
         self.cadastrar_button = Button(text="Entrar", background_color=get_color_from_hex('#5e2129'))
         self.cadastrar_button.bind(on_press=self.tela_pratos)
         self.add_widget(self.cadastrar_button)
 
     def tela_pratos(self, *args):
         self.parent.parent.current = 'Pratos'
-
+#Mari e Julia
 class TelaCadastro(BoxLayout):
     def __init__(self, **kwargs):
         super(TelaCadastro, self).__init__(**kwargs)
-        # Remova a linha abaixo se quiser manter o fundo branco
+  
         Window.clearcolor = (1, 1, 1, 1)
         self.orientation = 'vertical'
         self.padding = [120, 120]
@@ -109,13 +109,14 @@ class TelaCadastro(BoxLayout):
 
 from kivy.uix.gridlayout import GridLayout
 
+#Victor Makson
 class TelaPratos(GridLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         Window.clearcolor = get_color_from_hex("#ff8e31")
         self.cols = 2
 
-        # Bloco Entrada
+        
         entrada_layout = GridLayout(cols=1, size_hint_y=None, height='230dp')
         self.image1 = Image(source='1.jpeg', size_hint_y=None, height='200dp')
         self.button1 = Button(text='entrada', size_hint_y=None, height='30dp', background_color=(0.619, 0.039, 0.039, 1))
@@ -123,7 +124,7 @@ class TelaPratos(GridLayout):
         entrada_layout.add_widget(self.image1)
         entrada_layout.add_widget(self.button1)
 
-        # Bloco Veganos
+        
         veganos_layout = GridLayout(cols=1, size_hint_y=None, height='230dp')
         self.image2 = Image(source='2.jpeg', size_hint_y=None, height='200dp')
         self.button2 = Button(text='veganos', size_hint_y=None, height='30dp', background_color=(0.619, 0.039, 0.039, 1))
@@ -131,11 +132,11 @@ class TelaPratos(GridLayout):
         veganos_layout.add_widget(self.image2)
         veganos_layout.add_widget(self.button2)
 
-        # Adicionando os layouts de Entrada e Veganos ao layout principal
+        
         self.add_widget(entrada_layout)
         self.add_widget(veganos_layout)
 
-        # Bloco Sobremesas
+        
         sobremesas_layout = GridLayout(cols=1, size_hint_y=None, height='230dp')
         self.image3 = Image(source='3.jpeg', size_hint_y=None, height='200dp')
         self.button3 = Button(text='sobremesas', size_hint_y=None, height='30dp', background_color=(0.619, 0.039, 0.039, 1))
@@ -144,7 +145,7 @@ class TelaPratos(GridLayout):
         sobremesas_layout.add_widget(self.button3)
         self.add_widget(sobremesas_layout)
 
-        # Bloco Aperitivos
+        
         aperitivos_layout = GridLayout(cols=1, size_hint_y=None, height='230dp')
         self.image4 = Image(source='4.jpeg', size_hint_y=None, height='200dp')
         self.button4 = Button(text='aperitivos', size_hint_y=None, height='30dp', background_color=(0.619, 0.039, 0.039, 1))
