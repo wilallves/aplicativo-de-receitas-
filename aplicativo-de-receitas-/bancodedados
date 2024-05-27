@@ -1,0 +1,13 @@
+CREATE DATABASE cadastro_usuarios;
+USE cadastro_usuarios;
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    celular VARCHAR(20) NOT NULL,
+    senha VARCHAR(100) NOT NULL
+);
+
+INSERT INTO usuarios (nome, email, celular, senha)
+VALUES ('Nome do Usuário', 'exemplo@email.com', '123456789', 'senha123');
