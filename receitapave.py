@@ -10,12 +10,12 @@ kv = '''
 <BoxLayout>:
     canvas.before:
         Color:
-            rgba: 1, 0.5, 0, 1  # cor laranja
+            rgba: 1, 0.5, 0, 1 
         Rectangle:
             pos: self.pos
             size: self.size
 <Label>:
-    color: 0, 0, 0, 1  # fonte de texto preta
+    color: 0, 0, 0, 1  
     font_size: '18sp'
     halign: 'left'
     valign: 'top'
@@ -33,23 +33,28 @@ class RecipeApp(App):
         layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
 
         ingredients = [
-           '''1 pacote de biscoito tipo maisena
-              1 lata de leite condensado (395g)
-              2 latas de leite (utilize a lata de leite condensado como medida)
-              3 gemas de ovos
-              2 colheres de sopa de amido de milho (maisena)
-              4 colheres de sopa de cacau em pó ou chocolate em pó
-              200g de chocolate meio amargo picado
-              1 lata de creme de leite sem soro (reserve o soro para umedecer os biscoitos)'''
+            '1- Biscoitos tipo maisena ou champagne',
+            '2- Leite condensado',
+            '3- Leite',
+            '4- Amido de milho (maisena)vegetal',
+            '5- Gemas de ovos',
+            '6- Chocolate em pó ou cacau em pó',
+            '7- Creme de leite',
+            '8- Açúcar',
+            '9- Arroz branco para acompanhar',
+            '10- Essência de baunilha (opcional)',
+            '11- Licor ou rum (opcional, para umedecer os biscoitos)',
+            '12 Chocolate em barra ou raspas de chocolate (para decorar, opcional)',
+            '13- Frutas para decorar (opcional)',            
         ]
 
-        ingredient_label = Label(text='Ingredientes:\n' + '\n'.join(ingredients), size_hint_y=400, height=300, color=[1,1,1,1])
+        ingredient_label = Label(text='Ingredientes:\n' + '\n'.join(ingredients), size_hint_y=300, height=300, color=[1,1,1,1], font_size = 15)
 
         main_layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
         top_layout = BoxLayout(orientation='horizontal', size_hint_y=100, height=500, size_hint_x=1.5)
         bottom_layout = BoxLayout(orientation='vertical', size_hint_y=None, height=400)
 
-        foto_lasanha = Image(source='pave.jpg', size_hint= (2, 1))
+        foto_lasanha = Image(source='papave.jpg', size_hint= (2, 1))
         input_receita = TextInput (
             hint_text='Adicione um comentário', 
             size_hint_y=50, height=50, size_hint_x=0.9,
@@ -80,6 +85,32 @@ class RecipeApp(App):
     def go_to_preparation_mode(self, instance):
         preparation = (
             
+
+            """ 
+            Para fazer um pavê delicioso, comece preparando um creme cozido com leite condensado, leite, gemas e amido de milho. Em seguida, monte o pavê em um refratário alternando camadas de biscoitos umedecidos em licor ou rum e camadas do creme já frio. Finalize cobrindo o pavê com chantilly batido e decore com raspas de chocolate. Leve à geladeira por algumas horas para firmar e os sabores se misturarem. Sirva gelado e desfrute dessa sobremesa irresistível!"""
+        )
+
+        preparation_label = Label(text='Modo de Preparo:\n' + preparation,font_size=12, size_hint_y=None, height=400, color=[1,1,1,1])
+        top_layout = self.main_layout.children[1]
+        bottom_layout = self.main_layout.children[0]
+
+        top_layout.clear_widgets()
+        bottom_layout.clear_widgets()
+
+        foto_lasanha = Image(source='papave.jpg', size_hint= (2, 1))
+        
+        bottom_layout.add_widget(preparation_label)
+        top_layout.add_widget(foto_lasanha)
+        top_layout.add_widget(BoxLayout())
+
+
+    def go_back_to_main(self, instance):
+        self.main_layout.clear_widgets()
+        self.main_layout = self.create_main_layout()
+        self.root.add_widget(self.main_layout)
+
+if __name__ == '__main__':
+    RecipeApp().run()
 
             """
           Em uma panela, misture o leite condensado, as gemas de ovos, o amido de milho e o cacau em pó até obter uma mistura homogênea.
