@@ -13,6 +13,7 @@ from kivy.properties import ObjectProperty
 from kivy.lang import Builder
 from kivy.uix.gridlayout import GridLayout
 from kivy.core.window import Window
+from kivy.uix.floatlayout import FloatLayout
 
 Window.size = 360,640
 
@@ -34,7 +35,7 @@ class Home(BoxLayout):
         
         self.cadastrar_button = Button(text="Entrar", background_color=get_color_from_hex('#1eb88f'))
         self.cadastrar_button.bind(on_press=self.entrar)
-        self.login_button = Button(text="Não possui uma conta? Cadastre-se", background_color=get_color_from_hex('#1eb88f'))
+        self.login_button = Button(text=" Cadastre-se", background_color=get_color_from_hex('#1eb88f'))
         self.login_button.bind(on_press=self.cadastrar)
         self.add_widget(self.cadastrar_button)
         self.add_widget(self.login_button)
@@ -158,8 +159,6 @@ class TelaPratos(GridLayout):
         print("Button released")
 
 
-
-
 class MyApp(App):
     def build(self):
          sm = ScreenManager()
@@ -167,16 +166,18 @@ class MyApp(App):
          tela_cadastro = TelaCadastro()
          tela_home = Home()
          tela_pratos = TelaPratos()
-
+         
+       
          screen_login = Screen(name='Login')
          screen_cadastro = Screen(name='Cadastro')
          screen_home = Screen(name='Home')
          screen_pratos = Screen(name='Pratos')
-
+         
          screen_login.add_widget(tela_login)
          screen_cadastro.add_widget(tela_cadastro)
          screen_home.add_widget(tela_home)
          screen_pratos.add_widget(tela_pratos)
+         
 
          sm.add_widget(screen_home)
          sm.add_widget(screen_login)
@@ -189,109 +190,3 @@ class MyApp(App):
 if __name__ == '__main__':
      MyApp().run()
    
-from kivy.app import App
-from kivy.uix.label import Label
-from kivy.uix.button import Button
-from kivy.uix.floatlayout import FloatLayout
-from kivy.core.window import Window
-from kivy.uix.image import Image
-from kivy.utils import get_color_from_hex
-
-Window.size = (360, 640)
-
-
-class LoginApp(App):
-    def build(self):
-        Window.clearcolor = (0.9, 0.5, 0, 0)
-        
-        layout_principal = FloatLayout()
-
-        label_titulo = Label(
-            text="Pratos Principais", 
-            size_hint=(0.2, 0.1),
-            pos_hint={'center_x': 0.5, 'center_y': 0.85},
-            color=[1, 1, 1, 1],
-            halign='center',
-            font_size=45
-        )
-        layout_principal.add_widget(label_titulo)
-
-        label_lasanha = Label(
-            text="Lasanha", 
-            size_hint=(0.2, 0.1),
-            pos_hint={'center_x': 0.6, 'center_y': 0.65},
-            color=[1, 1, 1, 1],
-            halign='center',
-            font_size=30
-        )
-        layout_principal.add_widget(label_lasanha)
-
-        label_strogonoff = Label(
-            text="Strogonoff", 
-            size_hint=(0.2, 0.1),
-            pos_hint={'center_x': 0.6, 'center_y': 0.45},
-            color=[1, 1, 1, 1],
-            halign='center',
-            font_size=30
-        )
-        layout_principal.add_widget(label_strogonoff)
-
-        label_cuscuz = Label(
-            text="Cuscuz", 
-            size_hint=(0.2, 0.1),
-            pos_hint={'center_x': 0.6, 'center_y': 0.25},
-            color=[1, 1, 1, 1],
-            halign='center',
-            font_size=30
-        )
-        layout_principal.add_widget(label_cuscuz)
-
-        foto_lasanha = Image(
-            source='C:/Users/aluno.sesipaulista/Downloads/08_LASANHA_FINAL-1-min.webp',
-            pos_hint={'center_x': 0.2, 'center_y': 0.6},  # Adjusted position to separate from label
-            size_hint=(0.3, 0.4)
-        )
-        layout_principal.add_widget(foto_lasanha)
-
-        foto_strogonoff = Image(
-            source='C:/Users/aluno.sesipaulista/Downloads/download (2).jpg',
-            pos_hint={'center_x': 0.2, 'center_y': 0.4},  # Adjusted position to separate from label
-            size_hint=(0.3, 0.4)
-        )
-        layout_principal.add_widget(foto_strogonoff)
-
-        foto_cuscuz = Image(
-            source='C:/Users/aluno.sesipaulista/Downloads/images (3).jpg',
-            pos_hint={'center_x': 0.2, 'center_y': 0.2},  # Adjusted position to separate from label
-            size_hint=(0.3, 0.4)
-        )
-        layout_principal.add_widget(foto_cuscuz)
-
-        botao_lasanha = Button(
-            text='Confira já', 
-            background_color=get_color_from_hex('#5e2129'),
-            size_hint=(0.20, 0.05),
-            pos_hint={'center_x': 0.6, 'center_y': 0.6}
-        )
-        layout_principal.add_widget(botao_lasanha)
-
-        botao_strogonoff = Button(
-            text='Confira já',
-            background_color=get_color_from_hex('#5e2129'), 
-            size_hint=(0.20, 0.05),
-            pos_hint={'center_x': 0.6, 'center_y': 0.4}
-        )
-        layout_principal.add_widget(botao_strogonoff)
-
-        botao_cuscuz = Button(
-            text='Confira já',
-            background_color=get_color_from_hex('#5e2129'), 
-            size_hint=(0.20, 0.05),
-            pos_hint={'center_x': 0.6, 'center_y': 0.2}
-        )
-        layout_principal.add_widget(botao_cuscuz)
-
-        return layout_principal
-
-if __name__ == '__main__':
-    LoginApp().run()
