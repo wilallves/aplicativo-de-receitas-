@@ -8,7 +8,6 @@ from kivy.utils import get_color_from_hex
 
 Window.size = (360, 640)
 
-
 class Sobremesas(App):
     def build(self):
         Window.clearcolor = (0.9, 0.5, 0, 0)
@@ -45,22 +44,20 @@ class Sobremesas(App):
         )
         layout_principal.add_widget(label_pave)
 
-      
         foto_pudim = Image(
-            source='C:/Users/aluno.sesipaulista/Downloads/08_LASANHA_FINAL-1-min.webp',
-            pos_hint={'center_x': 0.2, 'center_y': 0.6},  # Adjusted position to separate from label
+            source='C:/Users/aluno.sesipaulista/Desktop/appreceitas/pudindin.jpg',
+            pos_hint={'center_x': 0.2, 'center_y': 0.6}, 
             size_hint=(0.3, 0.4)
         )
         layout_principal.add_widget(foto_pudim)
 
         foto_pave = Image(
-            source='C:/Users/aluno.sesipaulista/Downloads/download (2).jpg',
-            pos_hint={'center_x': 0.2, 'center_y': 0.4},  # Adjusted position to separate from label
+            source='C:/Users/aluno.sesipaulista/Desktop/appreceitas/papave.jpg',
+            pos_hint={'center_x': 0.2, 'center_y': 0.4},  
             size_hint=(0.3, 0.4)
         )
         layout_principal.add_widget(foto_pave)
 
-        
         botao_pudim = Button(
             text='Confira já', 
             background_color=get_color_from_hex('#5e2129'),
@@ -76,7 +73,6 @@ class Sobremesas(App):
             pos_hint={'center_x': 0.6, 'center_y': 0.4}
         )
         layout_principal.add_widget(botao_pave)
-
 
         return layout_principal
 
