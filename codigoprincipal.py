@@ -163,7 +163,9 @@ class TelaEntradas(BoxLayout):
         self.orientation = 'vertical'
         self.padding = 10
         self.lasanha()
+        self.cuscuz()
         self.strog()
+       
 
     def lasanha(self):
         label_titulo = Label(text="Entradas", size_hint=(1, 0.1),color=[1, 1, 1, 1],font_size=45)
@@ -193,9 +195,9 @@ class TelaEntradas(BoxLayout):
         self.parent.parent.current = "Strog"
 
     def cuscuz(self):
-        foto_cuscuz = Image(source='IMG_4357.jpg',size_hint=(1, 0.4))
+        foto_cuscuz = Image(source='OIP.jpeg',size_hint=(1, 0.4))
         botao_cuscuz = Button(text='Confira já',background_color=get_color_from_hex('#5e2129'), size_hint=(1, 0.1))
-        cuscuz = GridLayout(cols=1, size_hint_y=None, height='230dp')
+        cuscuz = GridLayout(cols=1, size_hint_y=None, height='175dp')
         cuscuz.add_widget(foto_cuscuz)
         cuscuz.add_widget(botao_cuscuz)
         self.add_widget(cuscuz)
@@ -295,13 +297,14 @@ class TelaLasanha(BoxLayout):
         self.principal()
      
 class TelaStrogonoff(BoxLayout):
-     def __init__(self, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         Window.clearcolor = (0.9, 0.5, 0, 0)
         self.orientation = 'vertical'
         self.padding = 10
+        self.principal()
 
-     def principal(self):
+    def principal(self):
         layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
 
         ingredients = [
@@ -316,33 +319,33 @@ class TelaStrogonoff(BoxLayout):
             'Arroz branco para acompanhar',
         ]
 
-        ingredient_label = Label(text='Ingredientes:\n' + '\n'.join(ingredients), size_hint_y=400, height=300, color=[1,1,1,1])
+        ingredient_label = Label(text='Ingredientes:\n' + '\n'.join(ingredients), size_hint_y=400, height=300, color=[1, 1, 1, 1])
 
         main_layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
         top_layout = BoxLayout(orientation='horizontal', size_hint_y=100, height=500, size_hint_x=1.5)
         bottom_layout = BoxLayout(orientation='vertical', size_hint_y=None, height=400)
 
-        foto_lasanha = Image(source='strogonoff.png.jpg', size_hint= (2, 1))
-        input_receita = TextInput (
-            hint_text='Adicione um comentário', 
+        foto_strogonoff = Image(source='strogonoff.png.jpg', size_hint=(2, 1))
+        input_receita = TextInput(
+            hint_text='Adicione um comentário',
             size_hint_y=50, height=50, size_hint_x=0.9,
-            pos= (200, 50),
-            multiline= True
-            )
+            pos=(200, 50),
+            multiline=True
+        )
 
-        botao_modo_preparo = Button (
-            text='Modo de Preparo', 
-            halign= 'center',
-            color= [1,1,1,1],
+        botao_modo_preparo = Button(
+            text='Modo de Preparo',
+            halign='center',
+            color=[1, 1, 1, 1],
             size_hint_y=50, height=50, size_hint_x=0.9,
-            pos= (300, 50),
-            on_press= self.modopreparo
-            )
+            pos=(300, 50),
+            on_press=self.modopreparo
+        )
 
         bottom_layout.add_widget(ingredient_label)
         bottom_layout.add_widget(input_receita)
         bottom_layout.add_widget(botao_modo_preparo)
-        top_layout.add_widget(foto_lasanha)
+        top_layout.add_widget(foto_strogonoff)
         top_layout.add_widget(layout)
 
         main_layout.add_widget(top_layout)
@@ -350,14 +353,12 @@ class TelaStrogonoff(BoxLayout):
 
         self.add_widget(main_layout)
 
-     def modopreparo(self, instance):
+    def modopreparo(self, instance):
         self.clear_widgets()
         self.add_widget(self.Janela_Modo_Preparo())
 
-     def Janela_modo_preparo(self):
+    def Janela_Modo_Preparo(self):
         preparation = (
-            
-
             """
             Em uma panela grande, aqueça a manteiga e o óleo em fogo médio.
             Adicione a cebola e o alho picados, e refogue até que estejam dourados e perfumados.
@@ -369,23 +370,38 @@ class TelaStrogonoff(BoxLayout):
             Cozinhe por mais 2-3 minutos, apenas para aquecer o champignon e garantir que todos os ingredientes estejam bem aquecidos.
             Prove e ajuste o tempero, se necessário.
             Sirva o Strogonoff de frango quente acompanhado de arroz branco e batata palha, se desejar.
-            Bom apetite!"""
+            Bom apetite!
+            """
         )
 
-        preparation_label = Label(text='Modo de Preparo:\n' + preparation,font_size=12, size_hint_y=None, height=400, color=[1,1,1,1])
-        top_layout = self.main_layout.children[1]
-        bottom_layout = self.main_layout.children[0]
+        preparation_label = Label(text='Modo de Preparo:\n' + preparation, font_size=12, size_hint_y=None, height=400, color=[1, 1, 1, 1])
+        main_layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
+        top_layout = BoxLayout(orientation='horizontal', size_hint_y=100, height=500, size_hint_x=1.5)
+        bottom_layout = BoxLayout(orientation='vertical', size_hint_y=None, size_hint_x=1, height=400)
 
-        top_layout.clear_widgets()
-        bottom_layout.clear_widgets()
+        foto_strogonoff = Image(source='strogonoff.png.jpg', size_hint=(2, 1))
+        botao_voltar = Button(
+            text='Voltar',
+            halign='center',
+            color=[1, 1, 1, 1],
+            size_hint_y=None, height=50, size_hint_x=0.9,
+            pos=(300, 50)
+        )
+        botao_voltar.bind(on_press=self.voltar)
 
-        foto_lasanha = Image(source='strogonoff.png.jpg', size_hint= (2, 1))
-        
         bottom_layout.add_widget(preparation_label)
-        top_layout.add_widget(foto_lasanha)
-        top_layout.add_widget(BoxLayout())
+        bottom_layout.add_widget(botao_voltar)
+        top_layout.add_widget(foto_strogonoff)
 
-        return top_layout
+        main_layout.add_widget(top_layout)
+        main_layout.add_widget(bottom_layout)
+
+        return main_layout
+
+    def voltar(self, instance):
+        self.clear_widgets()
+
+      
      
     
          
@@ -405,7 +421,7 @@ class TelaVeganos(BoxLayout):
         self.add_widget(label_titulo)
 
         foto_macarrao = Image(
-            source='C:/Users/aluno.sesipaulista/Downloads/08_LASANHA_FINAL-1-min.webp',
+            source='macarrao.jpeg',
             size_hint=(1, 0.4)
         )
         self.add_widget(foto_macarrao)
@@ -418,7 +434,7 @@ class TelaVeganos(BoxLayout):
         self.add_widget(botao_macarrao)
 
         foto_tofu = Image(
-            source='C:/Users/aluno.sesipaulista/Downloads/download (2).jpg',
+            source='Captura de tela 2024-06-11 003701.png',
             size_hint=(1, 0.4)
         )
         self.add_widget(foto_tofu)
